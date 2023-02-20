@@ -14,7 +14,35 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- Listage de la structure de la base pour db_notes
+DROP DATABASE IF EXISTS `db_notes`;
+CREATE DATABASE IF NOT EXISTS `db_notes` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `db_notes`;
+
+-- Listage de la structure de table db_notes. tasks
+DROP TABLE IF EXISTS `tasks`;
+CREATE TABLE IF NOT EXISTS `tasks` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(30) DEFAULT NULL,
+  `DESCRIPTION` varchar(30) DEFAULT NULL,
+  `DATE_task` date DEFAULT NULL,
+  `user_id` int(10) unsigned zerofill DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 -- Les données exportées n'étaient pas sélectionnées.
+
+-- Listage de la structure de table db_notes. t_user
+DROP TABLE IF EXISTS `t_user`;
+CREATE TABLE IF NOT EXISTS `t_user` (
+  `NAME` varchar(30) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `password` varchar(30) DEFAULT NULL,
+  `isAdmin` tinyint(1) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Les données exportées n'étaient pas sélectionnées.
 
