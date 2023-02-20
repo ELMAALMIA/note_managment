@@ -12,7 +12,7 @@
 </head>
 <body>
 <p style="color:red;">
-    Login and mot de passe incorrect
+    Login Or mot de passe incorrect
 </p>
 
 </body>

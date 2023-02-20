@@ -5,13 +5,14 @@ import estm.dsic.web01.dal.UserDao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Vector;
 
 public class AdminService {
     UserDao userdao=new UserDao();
     public User getUserByEmail(User u) throws SQLException {
         return userdao.getUserByEmail(u);
     }
-    public List<User> getAllUsers() throws SQLException {
+    public  Vector<User> getAllUsers() throws SQLException {
         return userdao.getAllUsers();
     }
     public void addUser(User u) throws SQLException {
@@ -22,6 +23,9 @@ public class AdminService {
     }
     public void updateUser(User u) throws SQLException {
         userdao.updateUser(u);
+    }
+    public void saveSession(User u) throws SQLException {
+        System.out.printf("");
     }
 
 }

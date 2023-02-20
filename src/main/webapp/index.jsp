@@ -1,47 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="CSS/style.css">
-    <script src="Js/validate.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/bootstrap-5.0.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
+    <script src="${pageContext.request.contextPath}/Js/validate.js"></script>
 </head>
 <body>
-<h1>Login</h1>
-<form action="LoginServlet" method="get" onsubmit="validatePassword(event)">
-    <table>
-        <tr>
-            <td >Login:</td>
-            <td><input type="email" name="email" id="email"></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="password" name="password" id="password"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="Login" ></td>
-        </tr>
-        <tr>
-            <p>Don't have an account yet? <a href="UserVue/signUpPage.jsp">Sign up</a></p>
-        </tr>
-    </table>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center">Login</h1>
+                </div>
+                <div class="card-body">
+                    <form action="authServlet" method="post" onsubmit="validatePassword(event)">
+                        <div class="form-group mb-3">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="email" id="email">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" name="password" id="password">
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="action" value="login">Login</button>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <p class="text-center mb-0">Don't have an account yet? <a href="${pageContext.request.contextPath}/UserVue/signUpPage.jsp">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function validatePassword(event) {
+        const passwordInput = document.getElementById("password");
+        const emailInput = document.getElementById("email");
+        const password = passwordInput.value;
+        const email = emailInput.value;
+        // validate email format using regular expression
+        const emailRegex = /^\S+@\S+\.\S+$/;
+        if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address.");
+            event.preventDefault(); // prevent the form from being submitted
+            return;
+        }
 
-    <h1></h1>
-</form>
+        if (password.length < 1) {
 
-
-<%
-    String errorMessage = (String) request.getAttribute("errorMessage");
-    if (errorMessage != null) {
-%>
-<p style="color:red;">
-    <%= errorMessage %>
-</p>
-<%
+            alert("Password cannot be empty.");
+            event.preventDefault(); // prevent the form from being submitted
+        }
+        else if (password.length < 8) {
+            alert("Password should be at least 8 characters.");
+            event.preventDefault(); // prevent the form from being submitted
+        }
+        // else {
+        //     alert("Password is valid.");
+        // }
     }
-%>
+
+</script>
 </body>
 </html>
